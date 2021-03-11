@@ -10,20 +10,24 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
+import configparser
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+config = configparser.ConfigParser(allow_no_value = True)
+
+config.read(f"{BASE_DIR}/development.cfg")
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'xmdrnt!u_e@a_4cbh!b$8nny=1tj8f8ewpi@icf(+g&_h0=6_3'
+SECRET_KEY = config.get('security', 'SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = config.get('general', 'DEBUG')
 
 ALLOWED_HOSTS = []
 
