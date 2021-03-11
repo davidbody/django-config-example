@@ -1,0 +1,7 @@
+# Copy this file to production.cfg and edit
+
+[general]
+DEBUG: false
+
+[security]
+SECRET_KEY: secret
