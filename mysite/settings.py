@@ -11,14 +11,18 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 import configparser
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+DJANGO_ENVIRONMENT = os.getenv('DJANGO_ENVIRONMENT', 'development')
+
 config = configparser.ConfigParser(allow_no_value = True)
 
-config.read(f"{BASE_DIR}/development.cfg")
+# Read configuration file based on DJANGO_ENVIRONMENT
+config.read(f"{BASE_DIR}/{DJANGO_ENVIRONMENT}.cfg")
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
