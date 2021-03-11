@@ -1,0 +1,7 @@
+# Copy this file to development.cfg and edit
+
+[general]
+DEBUG: true
+
+[security]
+SECRET_KEY: secret
